@@ -1,0 +1,63 @@
+"pathogen setup
+filetype off 
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
+
+"see vim-rails plugin doc [rails.txt]
+set nocompatible
+syntax on
+filetype plugin indent on
+
+" SHORTCUT KEY MAPPINGS """""""""""""""""""
+
+"select open file, MRU sorted
+map <D-e> :FufBuffer<CR>
+
+"open file
+map <D-N> :FufFile<CR>
+
+"opt-cmd-arrows [next & previous open files]
+map <M-D-Left> :bp<CR>
+map <M-D-Right> :bn<CR>
+
+"opt-cmd-] or [ [indent/unindent]
+map <D-‘> >
+map <D-“> <
+
+"tree browser
+map \ :NERDTreeToggle<CR>
+
+" SETTINGS """"""""""""""""""""""""""""""""
+set t_Co=256
+colorscheme vividchalk
+
+"no toolbar
+set guioptions=-T
+
+"font
+set guifont=Monaco:h16
+
+"history size
+set history=1024
+
+"incremental search
+set incsearch
+
+"no wrapping
+set wrap!
+
+"line numbers
+set number
+
+"always show statusline
+set laststatus=2
+
+"show matching brackets
+set showmatch
+
+set tabstop=2
+set smarttab
+set shiftwidth=2
+set autoindent
+set expandtab
+
