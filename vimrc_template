@@ -40,8 +40,10 @@ map <D-“> <
 map \ :NERDTreeToggle<CR>
 
 " SETTINGS """"""""""""""""""""""""""""""""
-set t_Co=256
-colorscheme vividchalk
+if has("gui_macvim")
+  set t_Co=256
+  colorscheme vividchalk
+endif
 
 "no toolbar
 set guioptions=-T
@@ -72,4 +74,15 @@ set smarttab
 set shiftwidth=2
 set autoindent
 set expandtab
+
+set nobackup
+set noswapfile
+
+set scrolloff=3
+set showcmd
+set ruler           " cursor position
+
+" more search options
+set hlsearch
+set smartcase
 
