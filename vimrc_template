@@ -8,15 +8,16 @@ set nocompatible
 syntax on
 filetype plugin indent on
 
-"function! AckGrep(command)
-"  cexpr system("ack " . a:command)
-"  cw
-"endfunction
 
 " SHORTCUT KEY MAPPINGS """""""""""""""""""
 
-"Somehow ack with this..?
-"map <M-C-D-f> :
+"ctrl+alt+f for ack current word in command mode
+map  :call AckGrep()<CR>
+function! AckGrep()
+  let command = "ack ".expand("<cword>")
+  cexpr system(command)
+  cw
+endfunction
 
 "prev/next in quickfix file listing (e.g. search results)
 map <M-D-Down> :cn<CR>
