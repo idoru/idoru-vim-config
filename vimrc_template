@@ -76,6 +76,12 @@ autocmd BufWritePre *.java,*.php :%s/\s\+$//e
 "set t_Co=256
 colorscheme vividchalk
 
+"Minibuf tab colors - must be set after colorscheme
+"Changed + Hidden buffers
+hi MBEChanged guibg=darkred ctermbg=darkred guifg=red ctermfg=red
+"Changed + Visible buffers
+hi MBEVisibleChanged guifg=darkred ctermfg=darkred
+
 "Show whitespace, fullstops for trailing whitespace
 set list
 set listchars=trail:.
