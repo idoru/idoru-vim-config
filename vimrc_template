@@ -27,7 +27,7 @@ map <M-D-Up> :cp<CR>
 map <D-e> :FufBuffer<CR>
 
 "open file
-map <D-N> :FufFile<CR>
+map <D-N> :FufFile **/<CR>
 
 "opt-cmd-arrows [next & previous open files]
 map <M-D-Left> :bp<CR>
