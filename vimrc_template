@@ -87,7 +87,7 @@ set backupdir=~/.vim-tmp,~/tmp,/var/tmp,/tmp
 set noswapfile
 
 "no toolbar
-set guioptions=-T
+set guioptions-=T
 
 "font
 set guifont=Monaco:h16
