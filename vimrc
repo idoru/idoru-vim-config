@@ -165,7 +165,7 @@ map <F7> mzgg=G'z :delmarks z<CR>
 
 " Make Cmd-// comment the current line, except Cmd-/ is bound, so it doesn't
 " work right now.
-map <D-/><D-/> v<D-/>
+"map <D-/><D-/> v<D-/>
 
 " Turn on Ruby folding but unfold when you open a new file because it's
 " annoying
