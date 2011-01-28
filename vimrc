@@ -12,7 +12,7 @@ filetype plugin indent on
 " SHORTCUT KEY MAPPINGS """""""""""""""""""
 
 "ctrl+alt+f for ack current word in command mode
-map  :call AckGrep()<CR>
+map <C-M-f> :call AckGrep()<CR>
 function! AckGrep()
   let command = "ack ".expand("<cword>")
   cexpr system(command)
@@ -78,12 +78,6 @@ if has("gui_macvim")
   colorscheme vividchalk
 endif
 
-"Minibuf tab colors - must be set after colorscheme
-"Changed + Hidden buffers
-hi MBEChanged guibg=darkred ctermbg=darkred guifg=red ctermfg=red
-"Changed + Visible buffers
-hi MBEVisibleChanged guifg=darkred ctermfg=darkred
-
 "Show whitespace, fullstops for trailing whitespace
 set list
 set listchars=trail:.
@@ -95,10 +89,10 @@ set backupdir=~/.vim-tmp,~/tmp,/var/tmp,/tmp
 set noswapfile
 
 "no toolbar
-set guioptions-=T
+set guioptions=-T
 
 "font
-set guifont=Monaco:h16
+set guifont=Inconsolata:h24
 
 "history size
 set history=1024
@@ -126,10 +120,65 @@ set autoindent
 set expandtab
 
 set scrolloff=3
+" Rayban & Peter
+let mapleader = ","
+
+" FuzzyFinder and switchback commands
+map <leader>e :e#<CR>
+map <leader>b :FufBuffer<CR>
+map <leader>f :FufFile<CR>
+map <leader><C-N> :FufFile **/<CR>
+
+" search
+map <leader>s :%s/
+
+" Split screen vertically and move between screens.
+map <leader>v :vsp<CR>
+map <leader>w ^Ww
+map <leader>= ^W=
+
+" Move between horizontally split screens.
+map <leader>j ^Wj
+map <leader>k ^Wk
+
+" set question mark to be part of a VIM word. in Ruby it is!
+set isk=@,48-57,_,?,!,192-255
+
+" Insert ' => '
+imap  <Space>=><Space>
+
+" reload .vimrc
+map <leader>rv :source ~/.vimrc<CR>
+
+" ctags again with gemhome added
+map <leader>t :!/usr/local/bin/ctags -R --exclude=.git --exclude=log * `rvm gemhome`/*<CR>
+
+" F7 reformats the whole file and leaves you where you were (unlike gg)
+map <F7> mzgg=G'z :delmarks z<CR>
+
+" Make Cmd-// comment the current line, except Cmd-/ is bound, so it doesn't
+" work right now.
+map <D-/><D-/> v<D-/>
+
+" Turn on Ruby folding but unfold when you open a new file because it's
+" annoying
+"let ruby_fold=1
+"au BufAdd *.rb foldopen!
+
+" Write all writeable buffers when changing buffers or losing focus.
+autocmd BufLeave * wall
+autocmd FocusLost * wall
+
+" Show typed command prefixes while waiting for operator.
 set showcmd
 set ruler           " cursor position
 
 " more search options
 set hlsearch
 set smartcase
+" Open reposh
+map <C-G> :!reposh<CR>
+map <C-A> :!gitx<CR><CR>
 
+" Find tag
+map <D-˜> :FufTag<CR>
