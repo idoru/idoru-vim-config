@@ -55,9 +55,9 @@ function! CommentOutLine()
     let comment_prefix = "//"
   endif
   let line = getline('.')
-  let pattern = "^".comment_prefix
+  let pattern = '^\s*'.comment_prefix
   if line =~ pattern
-    call setline(".", substitute(line, pattern, "", ""))
+    call setline(".", substitute(line, comment_prefix, "", ""))
   else
     call setline(".", substitute(line, "^", comment_prefix, ""))
   endif
