@@ -78,6 +78,12 @@ if has("gui_macvim")
   colorscheme vividchalk
 endif
 
+"Minibuf tab colors - must be set after colorscheme
+"Changed + Hidden buffers
+hi MBEChanged guibg=darkred ctermbg=darkred guifg=red ctermfg=red
+"Changed + Visible buffers
+hi MBEVisibleChanged guifg=darkred ctermfg=darkred
+
 "Show whitespace, fullstops for trailing whitespace
 set list
 set listchars=trail:.
@@ -120,6 +126,7 @@ set autoindent
 set expandtab
 
 set scrolloff=3
+
 " Rayban & Peter
 let mapleader = ","
 
