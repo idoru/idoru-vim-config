@@ -148,6 +148,9 @@ map <leader>= ^W=
 map <leader>j ^Wj
 map <leader>k ^Wk
 
+" AckGrep current word
+map <leader>a :call AckGrep()<CR>
+
 " set question mark to be part of a VIM word. in Ruby it is!
 set isk=@,48-57,_,?,!,192-255
 
