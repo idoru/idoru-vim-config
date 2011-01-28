@@ -44,24 +44,10 @@ map <D-Z> :later 1<CR>
 "file tree browser - backslash
 map \ :NERDTreeToggle<CR>
 
-"simple comment/uncomment visual selection with cmd+/
-vmap <silent> <D-/> :call CommentOutLine()<CR>
-function! CommentOutLine()
-  let ext = expand("%:e")
-
-  if ext == "rb" || ext == "sh"
-    let comment_prefix = "#"
-  elseif ext == "c" || ext == "cpp" || ext == "h" || ext == "h" || ext == "m" || ext == "mm"
-    let comment_prefix = "//"
-  endif
-  let line = getline('.')
-  let pattern = '^\s*'.comment_prefix
-  if line =~ pattern
-    call setline(".", substitute(line, comment_prefix, "", ""))
-  else
-    call setline(".", substitute(line, "^", comment_prefix, ""))
-  endif
-endfunction
+"comment/uncomment visual selection with cmd+/
+vmap <D-/> <plug>NERDCommenterToggle
+"comment/uncomment current line with cmd+/
+nmap <D-/> <plug>NERDCommenterToggle
 
 "strip trailing whitespace on save for code files
 "cocoa
