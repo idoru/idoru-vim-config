@@ -162,8 +162,8 @@ map <F7> mzgg=G'z :delmarks z<CR>
 "au BufAdd *.rb foldopen!
 
 " Write all writeable buffers when changing buffers or losing focus.
-autocmd BufLeave * wall
-autocmd FocusLost * wall
+autocmd FocusLost * silent! wall
+set autowriteall
 
 " Show typed command prefixes while waiting for operator.
 set showcmd
