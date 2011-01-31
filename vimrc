@@ -23,12 +23,6 @@ endfunction
 map <M-D-Down> :cn<CR>
 map <M-D-Up> :cp<CR>
 
-"select open file, MRU sorted
-map <D-e> :FufBuffer<CR>
-
-"open file
-map <D-N> :FufFile **/<CR>
-
 "opt-cmd-arrows [next & previous open files]
 map <M-D-Left> :bp<CR>
 map <M-D-Right> :bn<CR>
@@ -82,6 +76,11 @@ set noswapfile
 
 "no toolbar
 set guioptions=-T
+"no gui tab bar
+set guioptions-=e
+
+"no scrollbars
+set guioptions-=rL
 
 "font
 set guifont=Inconsolata:h24
@@ -121,6 +120,8 @@ map <leader>e :e#<CR>
 map <leader>b :FufBuffer<CR>
 map <leader>f :FufFile<CR>
 map <leader><C-N> :FufFile **/<CR>
+map <D-e> :FufBuffer<CR>
+map <D-N> :FufFile **/<CR>
 
 " search
 map <leader>s :%s/
@@ -138,13 +139,16 @@ map <leader>k ^Wk
 map <leader>a :call AckGrep()<CR>
 
 " set question mark to be part of a VIM word. in Ruby it is!
-set isk=@,48-57,_,?,!,192-255
+autocmd FileType ruby set isk=@,48-57,_,?,!,192-255
 
 " Insert ' => '
-imap  <Space>=><Space>
+autocmd FileType ruby imap  <Space>=><Space>
 
 " reload .vimrc
 map <leader>rv :source ~/.vimrc<CR>
+
+" refresh the FuzzyFinder cache
+map <leader>rf :FufRenewCache<CR>
 
 " ctags again with gemhome added
 map <leader>t :!/usr/local/bin/ctags -R --exclude=.git --exclude=log * `rvm gemhome`/*<CR>
@@ -152,9 +156,6 @@ map <leader>t :!/usr/local/bin/ctags -R --exclude=.git --exclude=log * `rvm gemh
 " F7 reformats the whole file and leaves you where you were (unlike gg)
 map <F7> mzgg=G'z :delmarks z<CR>
 
-" Make Cmd-// comment the current line, except Cmd-/ is bound, so it doesn't
-" work right now.
-"map <D-/><D-/> v<D-/>
 
 " Turn on Ruby folding but unfold when you open a new file because it's
 " annoying
@@ -164,6 +165,9 @@ map <F7> mzgg=G'z :delmarks z<CR>
 " Write all writeable buffers when changing buffers or losing focus.
 autocmd FocusLost * silent! wall
 set autowriteall
+
+" Let unsaved buffers exist in the background.
+set hidden
 
 " Show typed command prefixes while waiting for operator.
 set showcmd
@@ -175,6 +179,11 @@ set smartcase
 " Open reposh
 map <C-G> :!reposh<CR>
 map <C-A> :!gitx<CR><CR>
+" In insert mode, use Cmd-<CR> to jump to a new line in insert mode, a la
+" TextMate.
+imap <D-CR> <ESC>o
 
 " Find tag
 map <D-˜> :FufTag<CR>
+" Change background color when inserting.
+let g:insert_mode_background_color = "#333333"
