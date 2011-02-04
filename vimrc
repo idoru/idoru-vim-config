@@ -19,6 +19,15 @@ function! AckGrep()
   cw
 endfunction
 
+"rake spec in a split conque term
+map <M-C-D-R> :ConqueTermSplit rake spec<CR>
+
+"bundle exec cucumber in a split conque term
+map <M-C-D-C> :ConqueTermSplit bundle exec cucumber<CR>
+
+"rake in a split conque term
+map <D-R> :ConqueTermSplit rake<CR>
+
 "prev/next in quickfix file listing (e.g. search results)
 map <M-D-Down> :cn<CR>
 map <M-D-Up> :cp<CR>
