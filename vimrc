@@ -142,12 +142,12 @@ map <leader>s :%s/
 
 " Split screen vertically and move between screens.
 map <leader>v :vsp<CR>
-map <leader>w ^Ww
-map <leader>= ^W=
+map <leader>w <C-W>w
+map <leader>= <C-W>=
 
 " Move between horizontally split screens.
-map <leader>j ^Wj
-map <leader>k ^Wk
+map <leader>j <C-W>j
+map <leader>k <C-W>k
 
 " AckGrep current word
 map <leader>a :call AckGrep()<CR>
@@ -156,7 +156,7 @@ map <leader>a :call AckGrep()<CR>
 autocmd FileType ruby set isk=@,48-57,_,?,!,192-255
 
 " Insert ' => '
-autocmd FileType ruby imap  <Space>=><Space>
+autocmd FileType ruby imap <C-l> <Space>=><Space>
 
 " reload .vimrc
 map <leader>rv :source ~/.vimrc<CR>
