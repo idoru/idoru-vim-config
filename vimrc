@@ -10,6 +10,11 @@ filetype plugin indent on
 
 
 " SHORTCUT KEY MAPPINGS """""""""""""""""""
+" shift + arrow keys to resize window
+nnoremap <S-Up> <C-W>+
+nnoremap <S-Down> <C-W>-
+nnoremap <S-Left> <C-W><
+nnoremap <S-Right> <C-W>>
 
 "ctrl+alt+f for ack current word in command mode
 map <C-M-f> :call AckGrep()<CR>
