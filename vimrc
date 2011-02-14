@@ -143,6 +143,7 @@ map <leader>s :%s/
 " Split screen vertically and move between screens.
 map <leader>v :vsp<CR>
 map <leader>w <C-W>w
+map <leader>h <C-W>s
 map <leader>= <C-W>=
 
 " Move between horizontally split screens.
