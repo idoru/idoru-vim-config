@@ -59,7 +59,7 @@ nmap <D-/> <plug>NERDCommenterToggle
 
 "strip trailing whitespace on save for code files
 "cocoa
-autocmd BufWritePre *.m,*.h,*.c,*.mm,*.cpp,*.hpp :%s/\s\+$//e
+autocmd BufWritePre *.m,*.h,*.c,*.mm,*.cpp,*.hpp,*.feature :%s/\s\+$//e
 "rails
 autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.html,*.xml,*.erb,*.haml :%s/\s\+$//e
 "misc
