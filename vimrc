@@ -16,6 +16,9 @@ nnoremap <S-Down> <C-W>-
 nnoremap <S-Left> <C-W><
 nnoremap <S-Right> <C-W>>
 
+"Gundo with F5
+nnoremap <F5> :GundoToggle<CR>
+
 "ctrl+alt+f for ack current word in command mode
 map <C-M-f> :call AckGrep()<CR>
 function! AckGrep()
@@ -98,6 +101,7 @@ set guioptions-=rL
 
 "font
 set guifont=Inconsolata:h24
+"set guifont=Atari\ Classic\ Chunky:h16
 
 "history size
 set history=1024
