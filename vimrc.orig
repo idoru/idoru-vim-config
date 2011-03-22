@@ -19,16 +19,10 @@ nnoremap <S-Right> <C-W>>
 "Gundo with F5
 nnoremap <F5> :GundoToggle<CR>
 
-"ack current word in command mode
+"ctrl+alt+f for ack current word in command mode
+map <C-M-f> :call AckGrep()<CR>
 function! AckGrep()
   let command = "ack ".expand("<cword>")
-  cexpr system(command)
-  cw
-endfunction
-
-function! AckVisual()
-  normal gv"xy
-  let command = "ack ".@x
   cexpr system(command)
   cw
 endfunction
@@ -163,8 +157,6 @@ map <leader>k <C-W>k
 
 " AckGrep current word
 map <leader>a :call AckGrep()<CR>
-" AckVisual current selection
-vmap <leader>a :call AckVisual()<CR>
 
 " set question mark to be part of a VIM word. in Ruby it is!
 autocmd FileType ruby set isk=@,48-57,_,?,!,192-255
