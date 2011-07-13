@@ -181,6 +181,37 @@ map <leader>rf :FufRenewCache<CR>
 " ctags again with gemhome added
 map <leader>t :!/usr/local/bin/ctags -R --exclude=.git --exclude=log * `rvm gemhome`/*<CR>
 
+" Run a test tool with the current file and line number
+" The test tool is run in the last Terminal window
+function! RunTestTool(tool_cmd)
+  let dir = system('pwd')
+  let cuke_cmd = a:tool_cmd." ".expand("%").":".line(".")
+  let applescript = "osascript -e '".'tell application "Terminal"'
+  let applescript = applescript."\n"
+  let applescript = applescript.'do script "cd '.dir.'" in last window'
+  let applescript = applescript."\n"
+  let applescript = applescript.'do script "'.cuke_cmd.'" in last window'
+  let applescript = applescript."\n"
+  let applescript = applescript.'end tell'."'"
+  let foo = system(applescript)
+endfunction
+
+" If the file ends with _spec.rb, RunTestTool with rspec
+" If the file ends with .feature, RunTestTool with cuke
+command! RunTest :call RunTest()
+function! RunTest()
+  let filename = expand("%")
+  if filename =~ '_spec\.rb$'
+    call RunTestTool("be rspec")
+  endif
+  if filename =~ '\.feature$'
+    call RunTestTool("cuke")
+  endif
+endfunction
+
+" Run test at cursor
+map <leader>R :RunTest<CR>
+
 " F7 reformats the whole file and leaves you where you were (unlike gg)
 map <F7> mzgg=G'z :delmarks z<CR>
 
